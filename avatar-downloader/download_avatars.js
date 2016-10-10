@@ -17,6 +17,10 @@ const getRepoContributors = function(repoOwner, repoName, cb) {
 };
 
 const downloadImageByURL = function(url, filePath) {
+  let dir = './avatars'
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  };
   request(url).pipe(fs.createWriteStream(filePath));
 }
 
